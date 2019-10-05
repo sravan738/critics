@@ -1,0 +1,67 @@
+{% include "mysite/header.html" %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js" type="text/javascript"></script>
+<br><br>
+<div class="container">
+
+    <form action="token" method="post" enctype="multipart/form-data">{% csrf_token %}
+      <input type="file" name="csvfile" id="csvfile">
+       <button type="submit">upload</button>
+
+    </form>
+
+</div>
+
+<div class="container">
+
+    <div><canvas id="countries" width="600" height="400"></canvas></div>
+
+    <table class="table table-bordered">
+       <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">comment</th>
+          <th scope="col">result</th>
+        </tr>
+      </thead>
+      <tbody>
+
+
+    {% for x in data.result %}
+
+        <tr>
+            <td>   </td>
+            <td> {{ x.0 }}  </td>
+            <td> {{ x.1 }}  </td>
+        </tr>
+
+    {% endfor %}
+    </table>
+    <br><br>
+
+</div>
+
+     <script>
+        var z={{data.positive}}
+        var z2={{data.negative}}
+        var len={{total}}
+        var x=(z/len)*100
+        var y=(z2/len)*100
+        var pieData = [
+            {
+                value: x,
+                color:"#33cc33"
+            },
+            {
+                value : y,
+                color : "#ff0000"
+            }
+        ];
+        // Get the context of the canvas element we want to select
+        var countries= document.getElementById("countries").getContext("2d");
+        new Chart(countries).Pie(pieData);
+    </script>
+
+
+
+
+{% include "mysite/footer.html" %}

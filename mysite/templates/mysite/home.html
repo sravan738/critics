@@ -1,0 +1,96 @@
+{% include "mysite/header.html" %}
+{% load static %}
+<!--body-->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+       <a href="thor"><img src="{% static 'mysite/images/thor.jpg' %}" class="d-block w-100 imgmul" >
+    </div>
+    <div class="carousel-item">
+       <a href="avengers"><img src="{% static 'mysite/images/avengers.jpg' %}" class="d-block w-100 imgmul" >
+    </div>
+    <div class="carousel-item">
+      <a href="sherlock"> <img src="{% static 'mysite/images/sherlock.jpg' %}" class="d-block w-100 imgmul" >
+    </div>
+    <div class="carousel-item">
+       <a href="lion"><img src="{% static 'mysite/images/lion.jpg' %}" class="d-block w-100 imgmul" >
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<br><br>
+<!-- card -->
+<div class="container">
+  <div class="row">
+<div class="card-deck">
+  <div class="card">
+    <a href="thor"><img src="{% static 'mysite/images/thor1.jpg' %}" class="card-img-top imgmul1" alt="..."> </a>
+    <div class="card-body">
+      <h5 class="card-title">THOR</h5>
+      <p class="card-text"></p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <a href="sherlock"> <img src="{% static 'mysite/images/sherlock1.jpg' %}" class="card-img-top imgmul1" alt="..."></a>
+    <div class="card-body">
+      <h5 class="card-title">SHERLOCK HOLMES</h5>
+      <p class="card-text"></p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <a href="avengers"><img src="{% static 'mysite/images/avengers1.jpg' %}" class="card-img-top imgmul1" alt="..."></a>
+    <div class="card-body">
+      <h5 class="card-title">AVENGERS</h5>
+      <p class="card-text"></p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+</div>
+  <br><br>
+  <div class="row">
+<div class="card-deck">
+  <div class="card">
+    <a href="lion"><img src="{% static 'mysite/images/lion1.jpg' %}" class="card-img-top imgmul1" alt="..."></a>
+    <div class="card-body">
+      <h5 class="card-title">The LION KING</h5>
+      <p class="card-text"></p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="{% static 'mysite/images/spider.jpg' %}" class="card-img-top imgmul1" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">SPIDERMAN FAR FROM HOME</h5>
+      <p class="card-text"></p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="{% static 'mysite/images/kabir.jpg' %}" class="card-img-top imgmul1" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">KABIR SINGH</h5>
+      <p class="card-text"></p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+{% include "mysite/footer.html" %}
