@@ -123,12 +123,12 @@ def csv_wrapper(func):
         inner_result, positive, negative = func(*args, **kwargs)
 
         # Writing to file
-        with open('/Users/sravan/pycharmprojects/new_srav.csv', 'w')as new_file:
-            csv_writer = csv.writer(new_file)
-            inner_result = [["review", "label"]] + inner_result
-            for line in inner_result:
-                csv_writer.writerow(line)
-        return {"positive": positive, "negative": negative, "result":inner_result}
+        # with open('/Users/sravan/pycharmprojects/new_srav.csv', 'w')as new_file:
+        #     csv_writer = csv.writer(new_file)
+        #     inner_result = [["review", "label"]] + inner_result
+        #     for line in inner_result:
+        #         csv_writer.writerow(line)
+        return {"positive": positive, "negative": negative, "result": inner_result}
 
     return csv_inner_function
 
@@ -150,7 +150,7 @@ def semantic_analyser(input_text):
 
 @csv_wrapper
 def normalization(*args, **kwargs):
-    input_data= kwargs["input_data"]
+    input_data = kwargs["input_data"]
     outer_result = []
     positive, negative = (0, 0)
     print(input_data)
@@ -161,13 +161,17 @@ def normalization(*args, **kwargs):
         # Removing stop words
         step2 = [text for text in step1 if text not in stop_words]
 
-        # formating_data = map(lambda x: ", ".join([text for text in x.lower().split(" ") if text not in stop_words]), line)
-
         # Character casing
         step3 = casing_the_characters(step2)
 
         # Negation
         step4 = Utilities.negation(step3)
+
+        # stemming - PorterStemmer()
+
+        # POS-Tagging
+
+        # Random-Forest-Algorithm
 
         # Combine data
         step5 = " ".join(step4)
@@ -179,6 +183,7 @@ def normalization(*args, **kwargs):
 
         outer_result.append(step6)
     return (outer_result, positive, negative)
+
 
 if __name__ == '__main__':
     result = normalization()
