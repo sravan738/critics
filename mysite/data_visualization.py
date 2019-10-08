@@ -131,6 +131,7 @@ class visualize:
                 number_of_adjective += 1
             elif re.match('DT', pos):
                 number_of_interjection += 1
+                
         pos_tagged_review["number_of_proper_nouns"] = number_of_proper_nouns
         pos_tagged_review["number_of_other_nouns"] = number_of_other_nouns
         pos_tagged_review["number_of_pronouns"] = number_of_pronouns
