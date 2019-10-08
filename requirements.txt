@@ -2,9 +2,6 @@ django==2.2.6
 textblob==0.15.3
 db-sqlite3==0.0.1
 urllib3==1.25.3
-django-nvd3==0.9.7
-django-bower==5.2.0
+django-nvd3
+django-bower
 nltk==3.4.5
-numpy=1.17.2
-pandas==0.25.1
-sklearn==0.0
