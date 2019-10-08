@@ -1,0 +1,52 @@
+{% include "mysite/header.html" %}
+<br><br>
+<div>
+    <h4>Would you like to review</h4><hr>
+    <form method="post" action="visual">{% csrf_token %}
+      <div class="form-group">
+        <textarea name="comment" id="comment" class="form-control"> </textarea>
+      </div>
+      <br>
+      <button type="submit" style="float:right">Review</button>
+    </form>
+    <br>
+    <br>
+
+</div>
+
+<div class="container">
+
+    <div><canvas id="countries" width="600" height="400"></canvas></div>
+
+    <table class="table table-bordered">
+       <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">DATA VISUALIZATION</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      {% for x in data.result %}
+
+        <tr>
+            <td>   </td>
+            <td> {{ x.0 }}  </td>
+            <td> {{ x.1 }}  </td>
+        </tr>
+
+    {% endfor %}
+
+
+    </table>
+    <br><br>
+
+</div>
+
+
+
+<br><br><b></b>
+
+
+
+{% include "mysite/footer.html" %}

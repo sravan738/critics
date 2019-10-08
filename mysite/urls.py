@@ -14,6 +14,6 @@ urlpatterns = [
     path('csv', views.csv),
     path('token', views.token001),
     path('login', views.login),
-    #path('piechart', views.demo_piechart),
+    path('visual', views.token003),
 
 ]

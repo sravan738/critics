@@ -1,0 +1,59 @@
+{% include "mysite/header.html" %}
+<br><br>
+<div>
+    <h4>Would you like to review</h4>
+    <hr>
+    <form method="post" action="visual">{% csrf_token %}
+        <div class="form-group">
+            <textarea name="comment" id="comment" class="form-control"> </textarea>
+        </div>
+        <br>
+        <button type="submit" style="float:right">Review</button>
+    </form>
+    <br>
+    <br>
+
+</div>
+
+<div class="container">
+
+    <div>
+        <canvas id="countries" width="600" height="400"></canvas>
+    </div>
+    {% for key,value in data.items %}
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Process</th>
+            <th scope="col">Result</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if value.type == dict %}
+            {% for k,v in value.items %}
+            <tr>
+                <td> {{ k }}</td>
+                <td> {{ v }}</td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        {% if value.type == list %}
+        <tr>
+            <td> {{ key }}</td>
+            <td> {{ value }}</td>
+        </tr>
+        {% endif %}
+    </table>
+    {% endfor %}
+
+
+    <br><br>
+
+</div>
+
+
+<br><br><b></b>
+
+
+{% include "mysite/footer.html" %}

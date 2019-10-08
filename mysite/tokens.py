@@ -158,6 +158,7 @@ def normalization(*args, **kwargs):
         # Tokenisation
         step1 = line.lower().split(" ") if Utilities.isheader(line) else [line.lower()]
 
+
         # Removing stop words
         step2 = [text for text in step1 if text not in stop_words]
 
