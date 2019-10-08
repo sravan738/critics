@@ -1,6 +1,8 @@
 import csv
 import nltk
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
+from nltk.stem import PorterStemmer, SnowballStemmer,WordNetLemmatizer
+from nltk.tokenize import sent_tokenize, word_tokenize
 
 
 class Utilities:
@@ -80,6 +82,13 @@ class Utilities:
             return False
 
 
+class Normalization:
+    def __init__(self, input_data, positive=0, negative=0):
+        self.input_data = input_data
+        self.positive = positive
+        self.negative = negative
+
+
 def casing_the_characters(input_text):
     return_text = []
     for text in input_text:
@@ -110,24 +119,13 @@ def csv_wrapper(func):
     def csv_inner_function(*args, **kwargs):
         # Reading from file
         input_data = args[0]
-        # with open('/Users/sravan/pycharmprojects/kumar.csv', 'r') as f:
-        #     csv_reader = csv.reader(f)
-        #     input_data.extend([line for line in csv_reader])
 
-        # modifications
         index_to_capture = next(
             iter([list_index for list_index, value in enumerate(input_data[0]) if value in columns_to_take]), None)
         input_data = [rows[index_to_capture] for rows in input_data]
         kwargs["input_data"] = input_data[1:]
 
         inner_result, positive, negative = func(*args, **kwargs)
-
-        # Writing to file
-        # with open('/Users/sravan/pycharmprojects/new_srav.csv', 'w')as new_file:
-        #     csv_writer = csv.writer(new_file)
-        #     inner_result = [["review", "label"]] + inner_result
-        #     for line in inner_result:
-        #         csv_writer.writerow(line)
         return {"positive": positive, "negative": negative, "result": inner_result}
 
     return csv_inner_function
@@ -148,14 +146,19 @@ def semantic_analyser(input_text):
     # return [input_text, "neu"]
 
 
+def word_net_lemmatizer(input_text):
+    wnl = WordNetLemmatizer()
+    word_net_lemmatizer_stemmer_text = [wnl.lemmatize(word) for word in input_text]
+    return word_net_lemmatizer_stemmer_text
+
+
 @csv_wrapper
 def normalization(*args, **kwargs):
     input_data = kwargs["input_data"]
     outer_result = []
     positive, negative = (0, 0)
-    print(input_data)
     for line in input_data:
-        # Tokenisation
+        # Tokenization
         step1 = line.lower().split(" ") if Utilities.isheader(line) else [line.lower()]
 
 
@@ -168,7 +171,8 @@ def normalization(*args, **kwargs):
         # Negation
         step4 = Utilities.negation(step3)
 
-        # stemming - PorterStemmer()
+        # stemming - Porter-Stemmer
+        step5 = word_net_lemmatizer(step4)
 
         # POS-Tagging
 
