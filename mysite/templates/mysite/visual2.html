@@ -5,7 +5,7 @@
     <hr>
     <form method="post" action="visual">{% csrf_token %}
         <div class="form-group">
-            <textarea name="comment" id="comment" class="form-control"> </textarea>
+            <textarea name="comment" id="comment" class="form-control"></textarea>
         </div>
         <br>
         <button type="submit" style="float:right">Review</button>
@@ -32,13 +32,15 @@
         <tbody>
         {% if value.type == dict %}
             {% for k,v in value.items %}
-            <tr>
-                <td> {{ k }}</td>
-                <td> {{ v }}</td>
-            </tr>
+                {% if key != "analyser"%}
+                <tr>
+                    <td> {{ k }}</td>
+                    <td> {{ v }}</td>
+                </tr>
+                {% endif %}
             {% endfor %}
         {% endif %}
-        {% if value.type == list %}
+        {% if key != "stemming" and key != "pos_tagging"%}
         <tr>
             <td> {{ key }}</td>
             <td> {{ value }}</td>

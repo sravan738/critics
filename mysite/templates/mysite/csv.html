@@ -41,11 +41,11 @@
 </div>
 
      <script>
-        var z={{data.positive}}
-        var z2={{data.negative}}
-        var len={{total}}
-        var x=(z/len)*100
-        var y=(z2/len)*100
+        var positive={{data.positive}}
+        var negative={{data.negative}}
+        var len= positive + negative
+        var x=(positive/len)*100
+        var y=(negative/len)*100
         var pieData = [
             {
                 value: x,
