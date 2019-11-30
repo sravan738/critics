@@ -1,0 +1,15 @@
+{% include "mysite/header.html" %}
+
+<br><br>
+<div class="container">
+    <form action="token" method="post" enctype="multipart/form-data">{% csrf_token %}
+      <input type="file" name="csvfile" id="csvfile">
+       <button type="submit">upload</button>
+
+    </form>
+
+</div>
+
+
+
+{% include "mysite/footer.html" %}
